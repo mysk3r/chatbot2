@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+<category>
+    <pattern>Hola</pattern>
+    <template>
+        <card>
+            <image>https://cdn.pixabay.com/photo/2015/06/12/18/31/cute-807306_960_720.png</image>
+	        <title>Bienvenido al chat de cine</title>
+	        <subtitle>Cinefilo a su servicio</subtitle>
+        </card>
+        ¿En que puedo ayudarle?
+        </template>
+</category>
+<category><pattern>Hola *</pattern><template><srai>Hola</srai></template></category>
+<category><pattern>Saludos *</pattern><template><srai>Hola</srai></template></category>
+<category><pattern>Saludos</pattern><template><srai>Hola</srai></template></category>
+<category>
+    <pattern>adios</pattern>
+    <template>
+    <card>
+        <image>https://cdn.pixabay.com/photo/2015/06/12/18/31/cute-807306_960_720.png</image>
+        <title>Hasta pronto</title>
+	    <subtitle>Encantado de haberle ayudado</subtitle>
+    </card>
+    Espero volverle a ver pronto por aquí
+    </template>
+</category>
+<category>
+    <pattern>gracias</pattern>
+    <template>
+    <card>
+        <image>https://cdn.pixabay.com/photo/2015/06/12/18/31/cute-807306_960_720.png</image>
+        <title>Es un placer ayudarle</title>
+    </card>
+    </template>
+</category>
+<category>
+    <pattern>* entradas</pattern>
+    <template>
+        Lo siento, pero no dispongo de este servicio
+    </template>
+</category>
+<category>
+    <pattern>* entradas *</pattern>
+    <template>
+        Lo siento, pero no dispongo de este servicio.
+    </template>
+</category>
+
+<category>
+    <pattern>pelicula</pattern>
+    <template>Sobre que pelicula me estas preguntando?</template>
+</category>
+<category>
+    <pattern>sobre la pelicula *</pattern>
+    <template>
+    <think><set name="lpelicula"><star/></set></think>
+    Perfecto, dime que quieres saber sobre <star/>
+    </template>
+</category>
+
+<category>
+    <pattern>actor</pattern>
+    <template>Sobre que actor o actriz me estas preguntando?</template>
+</category>
+<category>
+    <pattern>sobre el actor *</pattern>
+    <template>
+    <think><set name="lactor"><star/></set></think>
+    Perfecto, dime que quieres saber sobre <star/>
+    </template>
+</category>
+<category>
+    <pattern>genero</pattern>
+    <template>Sobre que género me estas preguntando?</template>
+</category>
+<category>
+    <pattern>sobre el genero *</pattern>
+    <template>
+    <think><set name="lgenero"><star/></set></think>
+    Perfecto, dime que quieres saber sobre el género <star/>
+    </template>
+</category>
+// Estrenos
+<category>
+    <pattern>estrenos</pattern>
+    <template>
+    Conozco varios sitios donde ver estrenos 
+    <carousel>
+        <card>
+            <image>https://www.filmaffinity.com/images/logo_filmaffinity.png</image>
+            <title>Estrenos en filmaffinity</title>
+            <subtitle></subtitle>
+            <button>
+                <text>Pulsa aquí para verlos</text>
+                <url>https://www.filmaffinity.com/es/rdcat.php?id=upc_th_es</url>
+            </button>
+        </card>
+        <card>
+            <image>https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Logotipo_SensaCine.png/640px-Logotipo_SensaCine.png</image>
+            <title>Estrenos en sensacine</title>
+            <subtitle></subtitle>
+            <button>
+                <text>Pulsa aquí para verlos</text>
+                <url>http://www.sensacine.com/peliculas/estrenos/es/</url>
+            </button>
+        </card>
+        <card>
+            <image>https://surtseyfilms.es/wp-content/uploads/2017/06/Fotogramas-logo.jpg</image>
+            <title>Estrenos en fotogramas</title>
+            <subtitle></subtitle>
+            <button>
+                <text>Pulsa aquí para verlos</text>
+                <url>https://www.fotogramas.es/estrenos-cine/</url>
+            </button>
+        </card>
+        <card>
+            <image>https://pm1.narvii.com/6360/c92857e55e09e60a05411bb7b0b802780a70d3e3_00.jpg</image>
+            <title>Estrenos en estrenosdecine</title>
+            <subtitle></subtitle>
+            <button>
+                <text>Pulsa aquí para verlos</text>
+                <url>https://www.estrenosdecine.net/estrenos/</url>
+            </button>
+        </card>
+        <card>
+            <image>https://www.vectorlogo.es/wp-content/uploads/2017/03/logo-vector-20-minutos.jpg</image>
+            <title>Estrenos en 20 minutos</title>
+            <subtitle></subtitle>
+            <button>
+                <text>Pulsa aquí para verlos</text>
+                <url>https://www.20minutos.es/cine/cartelera/estrenos/</url>
+            </button>
+        </card>
+    </carousel>
+    </template>
+</category>
+<category><pattern>* estrenos</pattern><template><srai>estrenos</srai></template></category>
+<category><pattern>* estrenos * </pattern><template><srai>estrenos</srai></template></category>
+<category>
+    <pattern>cartelera</pattern>
+    <template>¿De que lugar quieres ver la cartelerar?</template>
+</category>
+<category>
+    <pattern>de *</pattern>
+    <template>
+    <think><set name="lugar"><star/></set></think>
+    <srai>quiero ver la cartelera de <get name="lugar"/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>Quiero ver la cartelera de <set>carteleras</set></pattern>
+    <template>
+        <think><set name="lugar"><star/></set></think>
+        <button>
+            <text>Pulsa aquí para verla</text>
+            <url>https://www.guiadelocio.com/<map name="carteleras"><star/></map>/cine/cartelera</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>* cartelera</pattern>
+    <template>
+        <condition name="lugar">
+            <li value="*"><srai>quiero ver la cartelera de <get name="lugar"/></srai></li>
+            <li><srai>cartelera</srai></li>
+        </condition>
+    </template>
+</category>
+<category><pattern>Que hacen en la cartelera</pattern><template>
+<srai>quiero ver la cartelera</srai></template></category>
+
+<category><pattern>Que hacen en la cartelera de <set>carteleras</set></pattern><template>
+<srai>Quiero ver la cartelera de <star/></srai></template></category>
+<category>
+    <pattern>pelicula</pattern>
+    <template>Sobre que pelicula me estas preguntando?</template>
+</category>
+<category>
+    <pattern>sobre la pelicula *</pattern>
+    <template>
+    <think><set name="lpelicula"><star/></set></think>
+    Perfecto, dime que quieres saber sobre <star/>
+    </template>
+</category>
+<category>
+    <pattern>sobre *</pattern>
+    <template>
+    <think><set name="lpelicula"><star/></set></think>
+    Perfecto, dime que quieres saber sobre <star/>
+    </template>
+</category>
+
+// director
+<category>
+    <pattern>Quien es el director de * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+        <button>
+            <text>Pulsa aquí para averiguarlo</text>
+            <url>https://www.google.com/search?q=%22quien+es+el+director+de+<star/>%22</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>Quien dirigio * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+        <srai>Quien es el director de <get name="lpelicula"/></srai>
+    </template>
+</category>
+<category>
+    <pattern>Quien es el director</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien es el director de <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>Quien la dirigio</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien es el director de <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>quien fue el director</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien es el director de <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+
+// reparto
+<category>
+    <pattern>Quien aparece en la pelicula * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+        <button>
+            <text>Pulsa aquí para averiguarlo</text>
+            <url>https://www.google.com/search?q=%22reparto+de+<star/>%22</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>Que actores salen en * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+        <srai>Quien aparece en la pelicula <get name="lpelicula"/></srai>
+    </template>
+</category>
+<category>
+    <pattern>quien sale en * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+        <srai>Quien aparece en la pelicula <get name="lpelicula"/></srai>
+    </template>
+</category>
+<category>
+    <pattern>Quien sale en la pelicula </pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien aparece en la pelicula <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>cual es el reparto</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien aparece en la pelicula <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>que actores salen</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Quien aparece en la pelicula <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+
+// trailer
+<category>
+    <pattern>Enseñame el trailer de * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+            <card>
+                <image>https://i.pinimg.com/originals/44/00/96/440096e3a5633c4761913d31503ebadb.jpg</image>
+                <title>Trailer</title>
+                <subtitle></subtitle>
+                <button>
+                    <text>Pulsa aquí para verlo</text>
+                     <url>https://www.youtube.com/results?search_query=trailer+esp+%22<star/>%22</url>
+                </button>
+            </card>
+    </template>
+</category>
+<category>
+    <pattern>Quiero ver el trailer de * </pattern>
+    <template>
+        <think><set name="lpelicula"><star/></set></think>
+            <card>
+                <image>https://i.pinimg.com/originals/44/00/96/440096e3a5633c4761913d31503ebadb.jpg</image>
+                <title>Trailer</title>
+                <subtitle></subtitle>
+                <button>
+                    <text>Pulsa aquí para verlo</text>
+                     <url>https://www.youtube.com/results?search_query=trailer+esp+%22<star/>%22</url>
+                </button>
+            </card>
+    </template>
+</category>
+<category>
+    <pattern>* trailer</pattern>
+    <template>
+        <condition name="lpelicula">
+            <li value="*"><srai>Enseñame el trailer de <get name="lpelicula"/></srai></li>
+            <li><srai>pelicula</srai></li>
+        </condition>
+    </template>
+</category>
+
+// info
+<category>
+    <pattern>* pelicula *</pattern>
+    <template>
+        <think><set name="lpelicula"><star index="2"/></set></think>
+        <button>
+            <text>Pulsa aquí para averiguarlo</text>
+            <url>https://www.google.com/search?q=%22<star/>+pelicula+<star index="2"/>%22</url>
+        </button>
+    </template>
+</category>
+
+</aiml>
